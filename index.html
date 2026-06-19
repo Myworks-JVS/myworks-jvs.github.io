@@ -1,6 +1,547 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyRatings - Smart Feedback Collection</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --primary:#6750A4;
+    --primary-light:#EADDFF;
+
+    --surface:#FFFFFF;
+    --surface-alt:#F8F9FD;
+
+    --text:#1C1B1F;
+    --text-secondary:#49454F;
+
+    --border:#E7E0EC;
+
+    --radius:28px;
+    --radius-small:20px;
+
+    --shadow:
+        0 1px 2px rgba(0,0,0,.06),
+        0 4px 12px rgba(0,0,0,.04);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:var(--surface-alt);
+    color:var(--text);
+    line-height:1.7;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:0 24px;
+}
+
+section{
+    padding:100px 0;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:64px 24px;
+
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(103,80,164,.12),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at bottom left,
+            rgba(103,80,164,.08),
+            transparent 40%
+        ),
+        var(--surface-alt);
+}
+
+.hero-content{
+    width:100%;
+    max-width:1080px;
+    text-align:center;
+}
+
+.banner-frame{
+    max-width:250px;
+
+    margin:0 auto 48px;
+
+    padding:10px;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:36px;
+
+    box-shadow:var(--shadow);
+}
+
+.hero-banner{
+    width:100%;
+    display:block;
+    border-radius:28px;
+}
+
+.hero h1{
+    font-size:clamp(3rem,8vw,4.8rem);
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.hero-subtitle{
+    max-width:760px;
+    margin:auto;
+
+    font-size:1.15rem;
+    color:var(--text-secondary);
+}
+
+.tagline{
+    margin-top:20px;
+
+    color:var(--primary);
+
+    font-size:1.25rem;
+    font-weight:700;
+}
+
+.cta{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-top:40px;
+
+    padding:16px 34px;
+
+    border-radius:999px;
+
+    background:var(--primary);
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.25s ease;
+}
+
+.cta:hover{
+    transform:translateY(-2px);
+}
+
+/* TITLES */
+
+.section-title{
+    text-align:center;
+
+    font-size:2.4rem;
+    font-weight:800;
+
+    margin-bottom:16px;
+}
+
+.section-subtitle{
+    text-align:center;
+
+    max-width:800px;
+
+    margin:0 auto 60px;
+
+    color:var(--text-secondary);
+}
+
+/* CARDS */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:24px;
+}
+
+.card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-small);
+
+    padding:32px;
+
+    box-shadow:var(--shadow);
+
+    transition:.25s ease;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+.card h3{
+    margin-bottom:12px;
+    font-size:1.1rem;
+}
+
+.card p{
+    color:var(--text-secondary);
+}
+
+/* POSITIONING */
+
+.highlight{
+    background:white;
+}
+
+.pitch{
+    max-width:900px;
+    margin:auto;
+    text-align:center;
+}
+
+.pitch p{
+    font-size:1.15rem;
+    color:var(--text-secondary);
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;
+
+    margin-top:50px;
+}
+
+.stat{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-small);
+
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+}
+
+.stat h2{
+    color:var(--primary);
+    font-size:2.2rem;
+    margin-bottom:8px;
+}
+
+/* AUDIENCE */
+
+.audience{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:24px;
+}
+
+.audience-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-small);
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+}
+
+.audience-card h3{
+    margin-bottom:12px;
+}
+
+.audience-card p{
+    color:var(--text-secondary);
+}
+
+/* FOOTER */
+
+footer{
+    background:#1C1B1F;
+
+    color:white;
+
+    text-align:center;
+
+    padding:70px 24px;
+}
+
+footer h2{
+    margin-bottom:12px;
+}
+
+footer p{
+    opacity:.85;
+}
+
+@media(max-width:768px){
+
+    section{
+        padding:80px 0;
+    }
+
+    .hero{
+        padding:40px 20px;
+    }
+
+    .section-title{
+        font-size:2rem;
+    }
+
+    .hero-subtitle{
+        font-size:1.05rem;
+    }
+}
+
+</style>
+
+</head>
+
 <body>
-<h1>MyRatings Developer Website</h1>
+
+<section class="hero">
+    <div class="hero-content">
+
+```
+    <div class="banner-frame">
+        <img src="icon_HD.png"
+             alt="MyRatings Banner"
+             class="hero-banner">
+    </div>
+
+    <h1>MyRating</h1>
+
+    <p class="hero-subtitle">
+        Smart, lightning-fast feedback collection for classrooms,
+        training sessions, workshops, conferences and live evaluations.
+    </p>
+
+    <div class="tagline">
+        Collect feedback at the speed of thought.
+    </div>
+
+    <a href="#features" class="cta">
+        Explore Features
+    </a>
+
+</div>
+```
+
+</section>
+
+<section id="features">
+    <div class="container">
+
+```
+    <h2 class="section-title">Why MyRating?</h2>
+
+    <p class="section-subtitle">
+        Built for educators, trainers, institutions, workshops and professional evaluation environments.
+    </p>
+
+    <div class="features">
+
+        <div class="card">
+            <h3>⭐ Precision Rating Engine</h3>
+            <p>Capture accurate feedback with half-star precision from 0–5 stars.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎙️ AI-Assisted Voice Input</h3>
+            <p>Convert spoken numbers into clean and consistent user identifiers.</p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Instant Submission</h3>
+            <p>Optimized for rapid high-volume feedback collection.</p>
+        </div>
+
+        <div class="card">
+            <h3>📊 Live Insights</h3>
+            <p>Sort and review responses instantly by score or timestamp.</p>
+        </div>
+
+        <div class="card">
+            <h3>📁 CSV Export</h3>
+            <p>Export analysis-ready data for Excel, Sheets, Power BI and AI tools.</p>
+        </div>
+
+        <div class="card">
+            <h3>🔐 Privacy First</h3>
+            <p>Offline-first architecture keeps your data on your device.</p>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<section class="highlight">
+
+```
+<div class="container">
+
+    <div class="pitch">
+
+        <h2 class="section-title">Not Another Survey App</h2>
+
+        <p>
+            Most feedback apps are forms.
+            <strong>MyRatings is an input system.</strong>
+            It focuses on signal quality, speed and usability—helping organizations capture better data with less friction.
+        </p>
+
+        <div class="stats">
+
+            <div class="stat">
+                <h2>0–5</h2>
+                <p>Half-Star Precision</p>
+            </div>
+
+            <div class="stat">
+                <h2>CSV</h2>
+                <p>One-Tap Export</p>
+            </div>
+
+            <div class="stat">
+                <h2>AI</h2>
+                <p>Voice Assistance</p>
+            </div>
+
+            <div class="stat">
+                <h2>100%</h2>
+                <p>Offline Friendly</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<section>
+
+```
+<div class="container">
+
+    <h2 class="section-title">Built For Professionals</h2>
+
+    <div class="audience">
+
+        <div class="audience-card">
+            <h3>🏫 Schools & Colleges</h3>
+            <p>Fast classroom feedback and evaluation workflows.</p>
+        </div>
+
+        <div class="audience-card">
+            <h3>🎓 Coaching Institutes</h3>
+            <p>Measure teaching effectiveness instantly.</p>
+        </div>
+
+        <div class="audience-card">
+            <h3>💼 Corporate Trainers</h3>
+            <p>Collect participant ratings during workshops and training sessions.</p>
+        </div>
+
+        <div class="audience-card">
+            <h3>🎤 Conferences & Events</h3>
+            <p>Capture audience sentiment in real time.</p>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<section class="highlight">
+
+```
+<div class="container">
+
+    <div class="pitch">
+
+        <h2 class="section-title">Technology</h2>
+
+        <p>
+            Built using modern Android architecture including Jetpack Compose and Material Design 3, delivering smooth performance, reliability, scalability and a premium user experience.
+        </p>
+
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- Footer must be inside body -->
+<footer class="app-footer" style="text-align: center; padding: 15px 0; color: #555; font-family: 'Segoe UI', sans-serif;">
+  <div>
+    <p style="margin: 5px 0;">&copy; <span id="currentYear"></span>  <strong>JVS Edtek</strong>. All rights reserved.</p>
+    <p style="margin: 0; font-size: 0.85em; color: #777;">
+      Contact:
+      <a href="mailto:myworks.jvs@gmail.com"
+         target="_blank"
+         rel="noopener noreferrer"
+         style="color: #777; text-decoration: none;">
+        myworks.jvs@gmail.com
+      </a>
+    </p>
+    <p style="margin: 0; font-size: 0.85em; color: #777;">
+      Privacy policy:
+      <a href="https://sugunakar85.github.io/Myworks_JVS/"
+         style="color: #777; text-decoration: none;">
+        Myrating
+      </a>
+    </p>
+  </div>
+</footer>
+<script>
+document.getElementById("currentYear").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
+
