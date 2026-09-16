@@ -325,6 +325,18 @@
       background: rgba(118,87,232,.09);
     }
 
+    /* Product app icons */
+    .product-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 22px rgba(25,36,65,.10);
+      border: 1px solid rgba(231,233,239,.9);
+    }
+
     .product-label {
       display: inline-block;
       margin-bottom: 16px;
@@ -627,6 +639,10 @@
         <div class="products">
 
           <article class="product">
+            <!-- Replace myrating-icon.png with your MyRatings app icon -->
+            <img class="product-icon" src="myrating-icon.png"
+                 alt="MyRatings app icon"
+                 onerror="this.style.display='none';">
             <div class="product-label">Feedback & Evaluation</div>
             <h3>MyRatings</h3>
             <p class="tagline">
@@ -650,6 +666,10 @@
           </article>
 
           <article class="product quixls">
+            <!-- Replace quixls-icon.png with your Quixls app icon -->
+            <img class="product-icon" src="quixls-icon.png"
+                 alt="Quixls app icon"
+                 onerror="this.style.display='none';">
             <div class="product-label">Assessment & Quizzes</div>
             <h3>Quixls</h3>
             <p class="tagline">
