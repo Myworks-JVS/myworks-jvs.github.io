@@ -561,11 +561,15 @@
       .values {
         grid-template-columns: 1fr;
       }
-
-      .footer-row {
-        align-items: flex-start;
-        flex-direction: column;
-      }
+.footer-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: center;
+}
     }
   </style>
 </head>
